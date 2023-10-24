@@ -1,0 +1,5 @@
+nest g resource название --no-spec - создает /dto, /entities, controller,module,service.
+модуль:     nest g mo module-name
+контроллер: nest g co controller-name
+сервис:     nest g se service-name
+провайдер:  nest g pr provider-name
