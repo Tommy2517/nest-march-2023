@@ -1,13 +1,13 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ConfigType } from '@nestjs/config';
 
-import configuration from './configuration';
+import apple from './configuration';
 
 @Injectable()
 export class CustomConfigService {
   constructor(
-    @Inject(configuration.KEY)
-    private readonly configs: ConfigType<typeof configuration>,
+    @Inject(apple.KEY)
+    private readonly configs: ConfigType<typeof apple>,
   ) {}
 
   get db_host(): string {

@@ -1,7 +1,6 @@
 import { ConfigService, registerAs } from '@nestjs/config';
 
-const
-  configService = new ConfigService();
+const configService = new ConfigService();
 const token = 'allConfigs';
 
 export default registerAs(token, () => ({
