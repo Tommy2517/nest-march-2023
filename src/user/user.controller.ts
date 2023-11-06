@@ -3,21 +3,24 @@ import {
   Controller,
   Delete,
   Get,
+  HttpStatus,
   Param,
   Post,
   Put,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiExtraModels, ApiResponse, ApiTags } from '@nestjs/swagger';
 
-import { CreateUserDto } from './dto/create-user.dto';
+import { CreateUserDto, UserCreateResponse } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserService } from './user.service';
 
 @ApiTags('User')
+@ApiExtraModels(UserCreateResponse)
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  @ApiResponse({ status: HttpStatus.CREATED, type: UserCreateResponse })
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);

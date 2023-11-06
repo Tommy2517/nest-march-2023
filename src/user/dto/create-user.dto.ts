@@ -34,3 +34,26 @@ export class CreateUserDto {
   @IsOptional()
   status: boolean;
 }
+
+export class UserCreateResponse extends CreateUserDto {
+  // @ApiProperty()
+  // userName: string;
+  //
+  // @ApiProperty()
+  // email: string;
+  //
+  // @ApiProperty()
+  // city: string;
+  //
+  // @ApiProperty()
+  // age: number;
+  //
+  // @ApiProperty()
+  // status: boolean;
+
+  @ApiProperty()
+  createdAt: string;
+
+  @ApiProperty()
+  updatedAt: string;
+}
