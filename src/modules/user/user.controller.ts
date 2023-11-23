@@ -9,7 +9,9 @@ import {
   Post,
   Put,
   Query,
+  UseGuards,
 } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 import { UserCreateRequestDto } from './dto/request/user-create.request.dto';
@@ -44,6 +46,7 @@ export class UserController {
   }
 
   @ApiOperation({ summary: 'Get user by id' })
+  @UseGuards(AuthGuard('bearer'))
   @Get(':userId')
   async getUserById(
     @Param('userId') userId: string,
@@ -67,5 +70,11 @@ export class UserController {
   @Delete(':userId')
   async deleteUser(@Param('userId') userId: string): Promise<void> {
     await this.userService.deleteUser(userId);
+  }
+  //TODO deportation login to module auth
+  @Post('login')
+  @ApiOperation({ summary: 'login' })
+  async loginUser(@Body() body: any) {
+    return await this.userService.login(body);
   }
 }
