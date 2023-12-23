@@ -35,7 +35,9 @@ export class UserRepository extends Repository<UserEntity> {
     queryBuilder.limit(query.limit);
     queryBuilder.offset(query.offset);
 
-    const [entities, total] = await queryBuilder.getManyAndCount();
+    const qwe = await queryBuilder.getManyAndCount();
+
+    const [entities, total] = qwe;
     return { entities, total };
   }
 }

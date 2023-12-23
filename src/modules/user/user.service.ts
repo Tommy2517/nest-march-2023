@@ -89,6 +89,7 @@ export class UserService {
     });
     const redis = await this.redisClient.setEx(token, 1000, token);
     console.log(redis);
+    console.log(this.redisClient);
 
     return { token };
   }

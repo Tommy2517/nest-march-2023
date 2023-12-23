@@ -12,7 +12,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 import { UserCreateRequestDto } from './dto/request/user-create.request.dto';
 import { UserListQueryRequestDto } from './dto/request/user-list-query.request.dto';
@@ -44,7 +44,7 @@ export class UserController {
     const result = await this.userService.createUser(body);
     return UserResponseMapper.toDetailsDto(result);
   }
-
+  @ApiBearerAuth()
   @ApiOperation({ summary: 'Get user by id' })
   @UseGuards(AuthGuard('bearer'))
   @Get(':userId')
